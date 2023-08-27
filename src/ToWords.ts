@@ -274,6 +274,12 @@ export class ToWords {
           words.push(locale.config.splitWord);
         }
       }
+
+      if (remainder * 10 < match.number && locale.config?.includeZeroInWords) {
+        if (locale.config?.texts?.zero) {
+          words.push(locale.config?.texts?.zero);
+        }
+      }
       words.push(...this.convertInternal(remainder));
     }
     return words;

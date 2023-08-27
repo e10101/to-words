@@ -38,6 +38,7 @@ export type LocaleConfig = {
     minus: string;
     only: string;
     point: string;
+    zero?: string;
   };
   numberWordsMapping: NumberWordMap[];
   exactWordsMapping?: NumberWordMap[];
@@ -51,6 +52,7 @@ export type LocaleConfig = {
   noSplitWordAfter?: string[];
   onlyInFront?: boolean;
   wordsJoinedBy?: string; // For zh-CN
+  includeZeroInWords?: boolean; // For zh-CH
 };
 
 export interface LocaleInterface {

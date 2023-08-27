@@ -17,9 +17,11 @@ export default class Locale implements LocaleInterface {
       minus: '负',
       only: '',
       point: '点',
+      zero: '零',
     },
     wordsJoinedBy: '',
     namedLessThan1000: false,
+    includeZeroInWords: true,
     numberWordsMapping: [
       { number: 100000000, value: '亿' },
       { number: 10000, value: '万' },
