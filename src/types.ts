@@ -50,6 +50,7 @@ export type LocaleConfig = {
   pluralWords?: string[];
   noSplitWordAfter?: string[];
   onlyInFront?: boolean;
+  wordsJoinedBy?: string; // For zh-CN
 };
 
 export interface LocaleInterface {

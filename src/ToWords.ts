@@ -19,6 +19,7 @@ import ptBR from './locales/pt-BR';
 import trTr from './locales/tr-TR';
 import nlSr from './locales/nl-SR';
 import eeEE from './locales/ee-EE';
+import zhCN from './locales/zh-CN';
 
 export const DefaultConverterOptions: ConverterOptions = {
   currency: false,
@@ -84,6 +85,8 @@ export class ToWords {
         return trTr;
       case 'nl-SR':
         return nlSr;
+      case 'zh-CN':
+        return zhCN;
     }
     /* eslint-enable @typescript-eslint/no-var-requires */
     throw new Error(`Unknown Locale "${this.options.localeCode}"`);
@@ -98,6 +101,9 @@ export class ToWords {
   }
 
   public convert(number: number, options: ConverterOptions = {}): string {
+    const locale = this.getLocale();
+    const wordsJoinedBy = locale.config.wordsJoinedBy != undefined ? locale.config.wordsJoinedBy : ' ';
+
     options = Object.assign({}, this.options.converterOptions, options);
 
     if (!this.isValidNumber(number)) {
@@ -114,7 +120,7 @@ export class ToWords {
     } else {
       words = this.convertNumber(number);
     }
-    return words.join(' ');
+    return words.join(wordsJoinedBy);
   }
 
   protected convertNumber(number: number): string[] {
